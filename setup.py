@@ -4,7 +4,7 @@ from typing import List
 e_dot = '-e .'
 
 def get_requirements(file_path:str)->List[str]:
-    '''This functions returns the list requirements'''
+    '''This functions returns the list of requirements'''
     requirements = list()
     with open(file_path) as req_file:
         requirements = req_file.readlines()
