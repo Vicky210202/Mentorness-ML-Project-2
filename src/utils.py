@@ -26,14 +26,14 @@ class VehicleDimensionsEncoder(BaseEstimator, TransformerMixin):
 
 
 def save_object(file_path, obj):
-    logging.info("Utilizing save object from utils.py")
+    logging.info("Utilizing save_object() from utils.py")
     try:
         dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path, exist_ok = True)
 
         with open(file_path, 'wb') as file_object:
             dump(obj, file_object)
-        logging.info("Saved the preprocessor object successfully!")
+        logging.info("Saved the object successfully!")
     except Exception as e:
         raise CustomException(e, sys)
             

@@ -18,6 +18,8 @@ class DataTransformationConfig:
     preprocessor_file_path: str = os.path.join('model artifacts', 'preprocessor.pkl')
     train_data_path: str = os.path.join('model artifacts', 'feature_engineering_train.csv')
     test_data_path: str = os.path.join('model artifacts', 'feature_engineering_test.csv')
+    preprocessed_train_data_path: str = os.path.join('model artifacts', 'preprocessed_train_data.csv')
+    preprocessed_test_data_path: str = os.path.join('model artifacts', 'preprocessed_test_data.csv')
 
 class DataTransformation:
     def __init__(self):
@@ -137,9 +139,20 @@ class DataTransformation:
                 obj = preprocessor
             )
 
+            logging.info("Creating preprocessed train data and test data as dataframes")
+            preprocessed_train_data = pd.DataFrame(train_arr, columns = train_data.columns)
+            preprocessed_test_data = pd.DataFrame(test_arr, columns = test_data.columns)
+            logging.info("Created dataframes successfully")
+
+            preprocessed_train_data.to_csv(self.data_transformation_config.preprocessed_train_data_path, index = None)
+            preprocessed_test_data.to_csv(self.data_transformation_config.preprocessed_test_data_path, index = None)
+            logging.info("Preprocessed train and test data exported to model artifacts.")
+
+
+            
             return(
-                train_arr,
-                test_arr
+                preprocessed_train_data,
+                preprocessed_test_data
             )
 
         except Exception as e:
