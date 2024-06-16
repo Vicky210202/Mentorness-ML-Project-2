@@ -31,7 +31,7 @@ class DataIngestion:
             train_data, test_data = train_test_split(data, test_size = 0.2, random_state = 42)
             train_data.to_csv(self.ingestion_config.train_data_path, index = None) 
             test_data.to_csv(self.ingestion_config.test_data_path, index = None)
-            logging.info("Train test split executed succesfully amd exported to model artifacts.")
+            logging.info("Train test split executed succesfully and exported to model artifacts.")
 
             logging.info("Data ingestion executed successfully")
 
