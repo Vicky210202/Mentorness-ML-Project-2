@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fastag Fraud Detection</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vehicle Transaction Prediction</h1>
+    </header>
+    <main>
+        <form action="/predict" method="POST">
+            <label for="Vehicle_Type">Vehicle Type:</label>
+            <select name="Vehicle_Type" id="Vehicle_Type">
+                <option value="Bus">Bus</option>
+                <option value="Car">Car</option>
+                <option value="Motorcycle">Motorcycle</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Truck">Truck</option>
+                <option value="Van">Van</option>
+            </select>
+            <br>
+
+            <label for="Vehicle_Dimensions">Vehicle Dimensions:</label>
+            <select name="Vehicle_Dimensions" id="Vehicle_Dimensions">
+                <option value="Large">Large</option>
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+            </select>
+            <br>
+
+            <label for="Geographical_Location">Geographical Location:</label>
+            <select name="Geographical_Location" id="Geographical_Location">
+                <option value="12.84197701525119, 77.67547528176169">12.84197701525119, 77.67547528176169</option>
+                <option value="12.936687032945434, 77.53113977439017">12.936687032945434, 77.53113977439017</option>
+                <option value="13.042660878688794, 77.47580097259879">13.042660878688794, 77.47580097259879</option>
+                <option value="13.059816123454882, 77.77068662374292">13.059816123454882, 77.77068662374292</option>
+                <option value="13.21331620748757, 77.55413526894684">13.21331620748757, 77.55413526894684</option>
+            </select>
+            <br>
+
+            <label for="Transaction_Amount">Transaction Amount:</label>
+            <input type="number" name="Transaction_Amount" id="Transaction_Amount" required>
+            <br>
+
+            <label for="Amount_paid">Amount Paid:</label>
+            <input type="number" name="Amount_paid" id="Amount_paid" required>
+            <br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if results is defined %}
+            <h2>Prediction Result: {{ results }}</h2>
+        {% endif %}
+    </main>
+    <footer>
+        <p>&copy; 2024 My Flask App</p>
+    </footer>
+</body>
+</html>

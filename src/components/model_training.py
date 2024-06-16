@@ -72,7 +72,6 @@ class ModelTrainer:
                     file_path = self.model_training_config.best_model_file_path,
                     obj = best_model
                 )              
-
-                
+             
         except Exception as e:
             raise CustomException(e, sys)

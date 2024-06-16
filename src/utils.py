@@ -6,7 +6,7 @@ from src.logger import logging
 import pandas as pd
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
-from dill import dump
+from dill import dump, load
 
 class VehicleDimensionsEncoder(BaseEstimator, TransformerMixin):
     def __init__(self):
@@ -36,5 +36,13 @@ def save_object(file_path, obj):
         logging.info("Saved the object successfully!")
     except Exception as e:
         raise CustomException(e, sys)
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_object:
+            return load(file_object)
+        
+    except Exception as e:
+        raise CustomException(e, sys) 
             
 

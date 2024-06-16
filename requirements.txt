@@ -5,3 +5,9 @@ matplotlib
 scikit-learn
 category_encoders
 dill
+Flask
+gunicorn
+Werkzeug
+Jinja2
+itsdangerous
+MarkupSafe
