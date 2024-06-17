@@ -17,23 +17,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/test_db_connection', methods=['GET'])
-def test_db_connection():
-    try:
-        conn = psycopg2.connect(
-            dbname=os.getenv('DB_NAME'),
-            user=os.getenv('DB_USER'),
-            password=os.getenv('DB_PASSWORD'),
-            host=os.getenv('DB_HOST'),
-            port=os.getenv('DB_PORT')
-        )
-        conn.close()
-        return jsonify({"message": "Database connection successful!"}), 200
-    except Exception as e:
-        logging.error("Database connection test failed", exc_info=True)
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     form_data = {
         "Vehicle_Type": request.form.get("Vehicle_Type"),
@@ -60,17 +44,17 @@ def predict():
     prediction = predict_pipeline.predict(predict_df_)
 
     predict_df["Fraud_indicator"] = int(prediction[0])
-    database_handler = DatabaseHandler(
-        dbname = os.getenv('DB_NAME'),
-        user = os.getenv('DB_USER'),
-        password = os.getenv('DB_PASSWORD'),
-        host = os.getenv('DB_HOST'),
-        port = os.getenv('DB_PORT')
-    )
+    # database_handler = DatabaseHandler(
+    #     dbname = os.getenv('DB_NAME'),
+    #     user = os.getenv('DB_USER'),
+    #     password = os.getenv('DB_PASSWORD'),
+    #     host = os.getenv('DB_HOST'),
+    #     port = os.getenv('DB_PORT')
+    # )
 
-    database_handler.insert_records(predict_df)
+    # database_handler.insert_records(predict_df)
 
-    print(predict_df)
+    # print(predict_df)
     
     return render_template('index.html', results = prediction[0])
 
