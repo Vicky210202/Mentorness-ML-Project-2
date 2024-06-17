@@ -128,14 +128,7 @@ input[type="submit"]:hover {
 
 .header-image {
     max-width: 100px; /* Adjust max width as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 10px; /* Adjust margins for spacing */
-}
-
-
-.header-image {
-    max-width: 100px; /* Adjust max width as needed */
-    height: auto; /* Maintain aspect ratio */
+    height: 50px; /* Maintain aspect ratio */
     margin: 0 10px; /* Adjust margins for spacing */
 }
 
