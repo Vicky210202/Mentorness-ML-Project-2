@@ -7,7 +7,7 @@ from src.logger import logging
 import numpy as np
 import pandas as pd
 from category_encoders import TargetEncoder
-from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 from src.utils import save_object
 from src.utils import VehicleDimensionsEncoder
 from sklearn.pipeline import Pipeline
@@ -72,21 +72,21 @@ class DataTransformation:
             
             numerical_pipeline = Pipeline(
                 steps = [
-                    ('scaler', MinMaxScaler())
+                    ('scaler', StandardScaler())
                 ]
             )
 
             target_encoding_pipeline = Pipeline(
                 steps = [
                     ('target_encoder', TargetEncoder()),
-                    ('scaler', MinMaxScaler())
+                    ('scaler', StandardScaler())
                 ]
             )
 
             ordinal_encoding_pipeline = Pipeline(
                 steps = [
                     ('ordinal_encoder', VehicleDimensionsEncoder()),
-                    ('scaler', MinMaxScaler())
+                    ('scaler', StandardScaler())
                 
                 ]
             )
@@ -105,6 +105,7 @@ class DataTransformation:
 
                 ]
             )
+            
             logging.info("Preprocessor is successfully created!")
 
             return preprocessor 
