@@ -14,7 +14,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     form_data = {
         "Vehicle_Type": request.form.get("Vehicle_Type"),
