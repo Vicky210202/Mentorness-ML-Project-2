@@ -29,15 +29,19 @@ class PredictionPipeline:
 class PredictData:
     def __init__(
             self,
-            Vehicle_Type: str, 
+            Vehicle_Type: str,
+            Vehicle_Plate_Number: str, 
             Vehicle_Dimensions: str, 
             Geographical_Location: str, 
             Transaction_Amount: int,
             Amount_paid: int
         ):
         self.Vehicle_Type = Vehicle_Type
+        self.Vehicle_Plate_Number = Vehicle_Plate_Number
         self.Vehicle_Dimensions = Vehicle_Dimensions
         self.Geographical_Location = Geographical_Location
+        self.Transaction_Amount = Transaction_Amount
+        self.Amount_paid = Amount_paid
         self.Amount_Frauded = Transaction_Amount - Amount_paid
        
     def get_predict_data_as_data_frame(self):
@@ -45,8 +49,11 @@ class PredictData:
             predict_data = [
                 {
                     'Vehicle_Type' : self.Vehicle_Type,
+                    'Vehicle_Plate_Number' : self.Vehicle_Plate_Number,
                     'Vehicle_Dimensions' : self.Vehicle_Dimensions,
                     'Geographical_Location' : self.Geographical_Location,
+                    'Transaction_Amount' :     self.Transaction_Amount,
+                    'Amount_paid' : self.Amount_paid ,
                     'Amount_Frauded' : self.Amount_Frauded
                 }
             ]

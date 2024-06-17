@@ -1,0 +1,151 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f0fff0; /* Light green background */
+    color: #006400; /* Dark green text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2em;
+}
+
+.form-section {
+    width: 35%;  /* Reduced width */
+    background: white;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #008000; /* Dark green label color */
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Green button background */
+    color: white;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, font-weight 0.2s ease;
+    display: block;
+    width: 40%;
+    font-weight: bold;
+    margin: 0 auto; /* Center align horizontally */
+}
+
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Scale up to 105% on hover */
+}  
+
+
+.result-section {
+    width: 65%; /* Adjusted width for results */
+    text-align: center;
+    margin-top: 2em;
+}
+
+.result-section img {
+    width: 60%; /* Reduced size for images */
+    max-width: 300px; /* Maximum width constraint */
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    animation: grow 0.5s ease-out forwards; /* Animation to grow from center */
+}
+
+
+.result-section img:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.prediction {
+    margin-top: 1em;
+}
+
+.prediction.fraud {
+    color: red; /* Red color for fraud prediction */
+}
+
+.prediction.legit {
+    color: green; /* Green color for legit prediction */
+}
+
+.footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #f0fff0; /* Match body background color */
+    color: #006400; /* Dark green text color */
+}
+
+.header-container {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    height: 100px; /* Example height, adjust as needed */
+}
+
+.header-image {
+    max-width: 100px; /* Adjust max width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px; /* Adjust margins for spacing */
+}
+
+
+.header-image {
+    max-width: 100px; /* Adjust max width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px; /* Adjust margins for spacing */
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0); /* Start from scale 0 */
+        opacity: 0; /* Start from hidden */
+    }
+    100% {
+        transform: scale(1); /* Grow to normal size */
+        opacity: 1; /* Fully visible */
+    }
+}
