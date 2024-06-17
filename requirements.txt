@@ -6,6 +6,8 @@ scikit-learn
 category_encoders
 dill
 Flask
+psycopg2-binary
+python-dotenv
 gunicorn
 Werkzeug
 Jinja2

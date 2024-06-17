@@ -1,5 +1,12 @@
+import os
+from dotenv import load_dotenv
+  
 from flask import Flask, request, render_template
 from src.pipeline.prediction_pipeline import PredictionPipeline, PredictData
+from src.pipeline.database_pipeline import DatabaseHandler
+
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -34,6 +41,16 @@ def predict():
     prediction = predict_pipeline.predict(predict_df_)
 
     predict_df["Fraud_indicator"] = int(prediction[0])
+    database_handler = DatabaseHandler(
+        dbname = os.getenv('DB_NAME'),
+        user = os.getenv('DB_USER'),
+        password = os.getenv('DB_PASSWORD'),
+        host = os.getenv('DB_HOST'),
+        port = os.getenv('DB_PORT')
+    )
+
+    database_handler.insert_records(predict_df)
+
     print(predict_df)
     
     return render_template('index.html', results = prediction[0])
