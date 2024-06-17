@@ -1,7 +1,9 @@
 import os
 from dotenv import load_dotenv
+import psycopg2
+from src.logger import logging
   
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from src.pipeline.prediction_pipeline import PredictionPipeline, PredictData
 from src.pipeline.database_pipeline import DatabaseHandler
 
@@ -13,6 +15,23 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/test_db_connection', methods=['GET'])
+def test_db_connection():
+    try:
+        conn = psycopg2.connect(
+            dbname=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            host=os.getenv('DB_HOST'),
+            port=os.getenv('DB_PORT')
+        )
+        conn.close()
+        return jsonify({"message": "Database connection successful!"}), 200
+    except Exception as e:
+        logging.error("Database connection test failed", exc_info=True)
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/predict', methods=['POST'])
 def predict():
