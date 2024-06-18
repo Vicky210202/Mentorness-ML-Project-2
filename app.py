@@ -12,11 +12,12 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# Index page for fraud detection dashboard
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
+# with predict, it return to the same dashboard 
 @app.route('/', methods=['POST'])
 def predict():
     try :
@@ -63,3 +64,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    

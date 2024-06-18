@@ -9,6 +9,7 @@ from data_transformation import DataTransformation
 from model_training import ModelTrainer
 
 
+# Systematic execution of all algorithms  
 if __name__ == "__main__" :
     
     # data ingestion

@@ -12,7 +12,7 @@ import pandas as pd
 import psycopg2
 
 
-
+# Creating pipelines for connecting local system databases with the ML flask app
 class DatabaseHandler:
     def __init__(self, dbname, user, password, host, port):
         self.dbname = dbname

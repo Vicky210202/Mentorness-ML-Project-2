@@ -10,6 +10,7 @@ from utils import load_object
 
 import pandas as pd
 
+# Creating pipelines for predicting the unseen given by the user in ML flask app
 class PredictionPipeline:
     def __init__(self):
         pass

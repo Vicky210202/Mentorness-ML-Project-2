@@ -17,6 +17,8 @@ from utils import VehicleDimensionsEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
+
+# Configuring file paths
 @dataclass
 class DataTransformationConfig:
     preprocessor_file_path: str = os.path.join('model artifacts', 'preprocessor.pkl')
@@ -25,6 +27,7 @@ class DataTransformationConfig:
     preprocessed_train_data_path: str = os.path.join('model artifacts', 'preprocessed_train_data.csv')
     preprocessed_test_data_path: str = os.path.join('model artifacts', 'preprocessed_test_data.csv')
 
+# Feature engineering, Feature selection and preprocessing algorithm
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()

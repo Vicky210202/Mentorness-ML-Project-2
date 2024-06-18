@@ -19,10 +19,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report
 
+# Configuring file paths
 @dataclass
 class ModelTrainingConfig:
     best_model_file_path: str = os.path.join('model artifacts', 'best_model.pkl')
 
+# Model training and model selection Algorithm
 class ModelTrainer:
     def __init__(self):
         self.model_training_config = ModelTrainingConfig()
