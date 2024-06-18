@@ -45,19 +45,10 @@ def predict():
         prediction = predict_pipeline.predict(predict_df_)
 
         predict_df["Fraud_indicator"] = int(prediction[0])
-        database_handler = DatabaseHandler(
-            dbname = os.environ.get('DB_NAME'),
-            user = os.environ.get('DB_USER'),
-            password = os.environ.get('DB_PASSWORD'),
-            host = os.environ.get('DB_HOST'),
-            port = os.environ.get('DB_PORT')
-        )
-
-        database_handler.insert_records(predict_df)
-
-        print(predict_df)
+        
         
         return render_template('index.html', results = prediction[0])
+
     except Exception as e:
         raise CustomException(e, sys)
 
