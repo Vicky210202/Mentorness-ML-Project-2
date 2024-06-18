@@ -21,7 +21,7 @@ def index():
 @app.route('/', methods=['POST'])
 def predict():
     try :
-      logging.info("prediction started")
+        logging.info("prediction started")
         form_data = {
             "Vehicle_Type": request.form.get("Vehicle_Type"),
             "Vehicle_Plate_Number": request.form.get("Vehicle_Plate_Number"),
