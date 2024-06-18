@@ -1,6 +1,12 @@
-from src.components.data_ingestion import DataIngestion
-from src.components.data_transformation import DataTransformation
-from src.components.model_training import ModelTrainer
+import os
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent.parent))
+
+from data_ingestion import DataIngestion
+from data_transformation import DataTransformation
+from model_training import ModelTrainer
 
 
 if __name__ == "__main__" :

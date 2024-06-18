@@ -1,6 +1,10 @@
 import os
 import sys
-from src.exception import CustomException
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
+
+from exception import CustomException
 
 from dataclasses import dataclass
 

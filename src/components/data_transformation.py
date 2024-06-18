@@ -1,15 +1,19 @@
 import os
 import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
+
 from dataclasses import dataclass
-from src.exception import CustomException
-from src.logger import logging 
+from exception import CustomException
+from logger import logging 
 
 import numpy as np
 import pandas as pd
 from category_encoders import TargetEncoder
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from src.utils import save_object
-from src.utils import VehicleDimensionsEncoder
+from utils import save_object
+from utils import VehicleDimensionsEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
