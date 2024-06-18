@@ -46,11 +46,11 @@ def predict():
 
         predict_df["Fraud_indicator"] = int(prediction[0])
         database_handler = DatabaseHandler(
-            dbname = os.getenv('DB_NAME'),
-            user = os.getenv('DB_USER'),
-            password = os.getenv('DB_PASSWORD'),
-            host = os.getenv('DB_HOST'),
-            port = os.getenv('DB_PORT')
+            dbname = os.environ.get('DB_NAME'),
+            user = os.environ.get('DB_USER'),
+            password = os.environ.get('DB_PASSWORD'),
+            host = os.environ.get('DB_HOST'),
+            port = os.environ.get('DB_PORT')
         )
 
         database_handler.insert_records(predict_df)
