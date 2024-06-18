@@ -2,6 +2,7 @@ import os
 import sys
 from dotenv import load_dotenv
 from src.exception import CustomException
+from src.logger import logging
   
 from flask import Flask, request, render_template, jsonify
 from src.pipeline.prediction_pipeline import PredictionPipeline, PredictData
@@ -20,6 +21,7 @@ def index():
 @app.route('/', methods=['POST'])
 def predict():
     try :
+      logging.info("prediction started")
         form_data = {
             "Vehicle_Type": request.form.get("Vehicle_Type"),
             "Vehicle_Plate_Number": request.form.get("Vehicle_Plate_Number"),
@@ -37,14 +39,17 @@ def predict():
             Transaction_Amount=form_data["Transaction_Amount"],
             Amount_paid=form_data["Amount_paid"]
         )
-
+        logging.info("prediction data gathered")
         predict_df = data.get_predict_data_as_data_frame()
         predict_df_ = predict_df.drop(columns=["Vehicle_Plate_Number", "Transaction_Amount", "Amount_paid"], axis=1)
 
         predict_pipeline = PredictionPipeline()
         prediction = predict_pipeline.predict(predict_df_)
 
+        logging.info("data predicted")
         predict_df["Fraud_indicator"] = int(prediction[0])
+
+        logging.info("data base is about to connect")
         database_handler = DatabaseHandler(
             dbname = os.getenv('DB_NAME'),
             user = os.getenv('DB_USER'),
@@ -52,14 +57,15 @@ def predict():
             host = os.getenv('DB_HOST'),
             port = os.getenv('DB_PORT')
         )
-
+        logging.info("data base connected")  
         database_handler.insert_records(predict_df)
 
+        logging.info("records entered in the database")
         print(predict_df)
         
-        return render_template('index.html', results = prediction[0])
+        return render_template('index.html', results = prediction[0])  
     except Exception as e:
         raise CustomException(e, sys)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
