@@ -8,6 +8,7 @@ dill
 Flask
 psycopg2-binary
 python-dotenv
+setuptools
 gunicorn
 Werkzeug
 Jinja2
