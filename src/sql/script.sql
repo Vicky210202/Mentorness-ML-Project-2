@@ -1,4 +1,3 @@
-
 -- Creating table 'fastag' in cloud PostgreSQL instance  
 DROP TABLE IF EXISTS fastag;
 CREATE TABLE fastag (
