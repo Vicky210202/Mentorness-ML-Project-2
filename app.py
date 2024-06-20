@@ -2,12 +2,11 @@ import os
 import sys
 from dotenv import load_dotenv
 from src.exception import CustomException
-  
+
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.pipeline.prediction_pipeline import PredictionPipeline, PredictData
 from src.pipeline.database_pipeline import DatabaseHandler
-
 
 load_dotenv()
 
@@ -22,7 +21,7 @@ def index():
 # with predict, it return to the same dashboard 
 @app.route('/', methods=['POST'])
 def predict():
-    try :
+    try:
         form_data = {
             "Vehicle_Type": request.form.get("Vehicle_Type"),
             "Vehicle_Plate_Number": request.form.get("Vehicle_Plate_Number"),
@@ -59,10 +58,11 @@ def predict():
         # database_handler.insert_records(predict_df)
 
         print(predict_df)
-        
-        return render_template('index.html', results = prediction[0])
+
+        return render_template('index.html', results=prediction[0])
     except Exception as e:
-        return e
+        error_message = str(e)
+        return render_template('error.html', error_message=error_message)
+
 if __name__ == '__main__':
     app.run(debug=True)
-    
