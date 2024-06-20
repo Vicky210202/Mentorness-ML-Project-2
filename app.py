@@ -47,6 +47,8 @@ def predict():
         prediction = predict_pipeline.predict(predict_df_)
 
         predict_df["Fraud_indicator"] = int(prediction[0])
+
+        # Connecting to cloud postgresSQL instance
         database_handler = DatabaseHandler(
             dbname = os.environ.get('DB_NAME'),
             user = os.environ.get('DB_USER'),
