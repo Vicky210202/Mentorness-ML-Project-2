@@ -17,6 +17,7 @@ class PredictionPipeline:
 
     def predict(self, predict_df):
         try:
+            # loading pickle files from parent directory is the optimized option
             model = load_object('best_model.pkl')
             preprocessor = load_object('preprocessor.pkl')
             preprocessed_data = preprocessor.transform(predict_df)
