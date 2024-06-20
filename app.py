@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from src.exception import CustomException
   
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 from src.pipeline.prediction_pipeline import PredictionPipeline, PredictData
 from src.pipeline.database_pipeline import DatabaseHandler
 
@@ -11,6 +12,7 @@ from src.pipeline.database_pipeline import DatabaseHandler
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 # Index page for fraud detection dashboard
 @app.route('/')

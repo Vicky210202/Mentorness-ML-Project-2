@@ -6,6 +6,7 @@ scikit-learn
 category_encoders
 dill
 Flask
+flask_cors
 psycopg2-binary
 python-dotenv
 setuptools
