@@ -1,7 +1,5 @@
--- Creating database 'mentorness' in PostgrSQL
-CREATE DATABASE mentorness;
 
--- Creating table 'fastag' in PostgreSQL 
+-- Creating table 'fastag' in cloud PostgreSQL instance  
 DROP TABLE IF EXISTS fastag;
 CREATE TABLE fastag (
     id BIGSERIAL NOT NULL PRIMARY KEY,
