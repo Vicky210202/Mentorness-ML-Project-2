@@ -17,8 +17,8 @@ class PredictionPipeline:
 
     def predict(self, predict_df):
         try:
-            model = load_object('model artifacts\\best_model.pkl')
-            preprocessor = load_object('model artifacts\preprocessor.pkl')
+            model = load_object('best_model.pkl')
+            preprocessor = load_object('preprocessor.pkl')
             preprocessed_data = preprocessor.transform(predict_df)
             preprocessed_data = pd.DataFrame(preprocessed_data, columns = predict_df.columns)
             prediction = model.predict(preprocessed_data)
