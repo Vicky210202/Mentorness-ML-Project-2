@@ -66,7 +66,7 @@ The goal is to create a robust model that can accurately identify instances of f
 5. Connect the GitHub repository to Render cloud service.
 6. Deploy the app to get a URL for the Flask app.
 
-💻**ML App**: [Fastag Fraud Detection API](https://fastag-fraud-detection-api.onrender.com)
+💻 **ML App**: [Fastag Fraud Detection API](https://fastag-fraud-detection-api.onrender.com)
 
 ---
 
